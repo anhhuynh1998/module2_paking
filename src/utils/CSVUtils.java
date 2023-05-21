@@ -16,7 +16,7 @@ public class CSVUtils {
             printWriter.flush();
             printWriter.close();
         } catch (FileNotFoundException e) {
-            throw new IllegalArgumentException(path + " invalid");
+            throw new IllegalArgumentException(path + " Không đọc được file !");
         }
     }
 
@@ -41,23 +41,23 @@ public class CSVUtils {
             while ((line = br.readLine()) != null && !line.trim().isEmpty())
                 lines.add(line);
         } catch (IOException e) {
-            throw new IllegalArgumentException(path + " invalid");
+            throw new IllegalArgumentException(path + " Không đọc được file !");
         }
         return lines;
     }
 
     public static List<String> readLichSu(String lichsu) {
-        List<String> linesss = new ArrayList<>();
+        List<String> names = new ArrayList<>();
         try {
             File file = new File(lichsu);
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String liness;
-            while ((liness = br.readLine()) != null && !liness.trim().isEmpty())
-                linesss.add(liness);
+            String name;
+            while ((name = br.readLine()) != null && !name.trim().isEmpty())
+                names.add(name);
         } catch (IOException e) {
-            throw new IllegalArgumentException(lichsu + " invalid");
+            throw new IllegalArgumentException(lichsu + " Không đọc được file !");
         }
-        return linesss;
+        return names;
     }
     public static List<String> readUser(String user) {
         List<String> linesss = new ArrayList<>();
@@ -68,7 +68,7 @@ public class CSVUtils {
             while ((liness = br.readLine()) != null && !liness.trim().isEmpty())
                 linesss.add(liness);
         } catch (IOException e) {
-            throw new IllegalArgumentException(user + " invalid");
+            throw new IllegalArgumentException(user + " Không đọc được file !");
         }
         return linesss;
     }

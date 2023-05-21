@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class EditCar {
     private final static String path = "D:\\Module_2\\casestudy_parking\\data\\information.csv";
-    private final static String lichSu = "D:\\Module_2\\casestudy_parking\\data\\lichsu.csv";
 
     static Scanner scanner = new Scanner(System.in);
     static ParkingService parkingService = new ParkingService();

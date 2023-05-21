@@ -1,5 +1,6 @@
 package utils;
 
+import views.DoanhThu;
 import views.PackingView;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public class MonthService {
     static Scanner scanner = new Scanner(System.in);
     public static int enterMonth() {
         List<String> newShowParkings = CSVUtils.readLichSu(lichSu);
-        PackingView.showLichSU(newShowParkings);
+        DoanhThu.showLichSU(newShowParkings);
         do {
             System.out.println("Nhập tháng(1-12) : ");
             String valueMonth = scanner.nextLine();

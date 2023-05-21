@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingService {
-    private final static String path = "data\\information.csv";
-    private final static String lichSu = "lichsu.csv";
+    private final static String path = "D:\\Module_2\\casestudy_parking\\data\\information.csv";
+    private final static String lichSu = "D:\\Module_2\\casestudy_parking\\data\\lichsu.csv";
     public ParkingService() {
 
     }
@@ -24,7 +24,7 @@ public class ParkingService {
     }
     public List<Ticket> findAllHistory() {
         List<Ticket> newLichsu = new ArrayList<>();
-        List<String> lines = CSVUtils.read(lichSu);
+        List<String> lines = CSVUtils.readLichSu(lichSu);
         for (String line : lines) {
             Ticket ticket = Ticket.parse(line);
             newLichsu.add(ticket);

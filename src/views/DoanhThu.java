@@ -1,5 +1,7 @@
 package views;
 
+import model.Ticket;
+import service.ParkingService;
 import utils.AppUtils;
 import utils.CSVUtils;
 import utils.DayService;
@@ -13,6 +15,8 @@ import java.util.Scanner;
 public class DoanhThu {
     private static Scanner scanner = new Scanner(System.in);
     private static String lichSu = "D:\\Module_2\\casestudy_parking\\data\\lichsu.csv";
+    static ParkingService parkingService = new ParkingService();
+
 
     public static void tinhDoanhThu() {
         System.out.println("1. Tính doanh thu tháng");
@@ -37,7 +41,7 @@ public class DoanhThu {
         int thang = MonthService.enterMonth();
 
         int tongTien = 0;
-        List<String> xuatRaLines = CSVUtils.read(lichSu);
+        List<String> xuatRaLines = CSVUtils.readLichSu(lichSu);
 
         for (String line : xuatRaLines) {
             String[] split = line.split(",");
@@ -60,7 +64,7 @@ public class DoanhThu {
         int ngay = DayService.enterDay();
 
         int tongTien = 0;
-        List<String> xuatRaLines = CSVUtils.read(lichSu);
+        List<String> xuatRaLines = CSVUtils.readLichSu(lichSu);
 
         for (String line : xuatRaLines) {
             String[] split = line.split(",");
@@ -77,5 +81,17 @@ public class DoanhThu {
 
         System.out.println("Doanh thu ngày " + ngay + " là: " + tongTien + " đồng.");
         Fragment.checkContinue();
+    }
+    public static void showLichSU(List<String> showCars) {
+        System.out.println("-----------------------------------------Lịch Sử Lấy Xe-------------------------------------------");
+        System.out.printf("%-15s %-15s %-15s %-15s %-15s\n", "Id", "Tên Xe", "Biển Số ", "Giá", "Ngày Gửi");
+        for (Ticket ticket : parkingService.findAllHistory()) {
+            System.out.printf("%-15s %-15s %-15s %-15s %-15s\n",
+                    ticket.getId(),
+                    ticket.getName(),
+                    ticket.getBienSo(),
+                    AppUtils.doubleToVND(ticket.getGia())
+                    , ticket.getNgayGui());
+        }
     }
 }

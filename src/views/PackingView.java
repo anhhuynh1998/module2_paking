@@ -16,7 +16,6 @@ import java.util.regex.Pattern;
 import static utils.AppUtils.exit;
 
 public class PackingView {
-    private final static String lichSu = "D:\\Module_2\\casestudy_parking\\data\\lichsu.csv";
 
     static Scanner scanner = new Scanner(System.in);
     static ParkingService parkingService = new ParkingService();
@@ -95,18 +94,7 @@ public class PackingView {
         }
     }
 
-    public static void showLichSU(List<String> showCars) {
-        System.out.println("-----------------------------------------Lịch Sử Lấy Xe-------------------------------------------");
-        System.out.printf("%-15s %-15s %-15s %-15s %-15s\n", "Id", "Tên Xe", "Biển Số ", "Giá", "Ngày Gửi");
-        for (Ticket ticket : parkingService.findAllHistory()) {
-            System.out.printf("%-15s %-15s %-15s %-15s %-15s\n",
-                    ticket.getId(),
-                    ticket.getName(),
-                    ticket.getBienSo(),
-                    AppUtils.doubleToVND(ticket.getGia())
-                    , ticket.getNgayGui());
-        }
-    }
+
 
     public static void Parking() {
         System.out.println(

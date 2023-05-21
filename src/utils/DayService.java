@@ -1,5 +1,6 @@
 package utils;
 
+import views.DoanhThu;
 import views.PackingView;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public class DayService {
     static Scanner scanner = new Scanner(System.in);
     public static int enterDay() {
         List<String> newShowParkings = CSVUtils.readLichSu(lichSu);
-        PackingView.showLichSU(newShowParkings);
+        DoanhThu.showLichSU(newShowParkings);
         System.out.println("Nhập ngày (1-31): ");
         String dayStr = scanner.nextLine();
 
