@@ -61,9 +61,16 @@ public class PackingView {
         return localDate;
     }
 
-    public static String inputName() {
-        System.out.println("Nhập Tên xe :");
-        return scanner.nextLine();
+    public static String editName() {
+        System.out.println("Nhập tên: ");
+        String name = scanner.nextLine();
+        final String nameRegex = "[a-zA-Z ]+";
+        if (Pattern.compile(nameRegex).matcher(name).matches()) {
+            return name;
+        } else {
+            System.out.println("nhập lại đúng định dạng tên");
+            return editName();
+        }
     }
 
     public static void inVeXe(Ticket ticket) {

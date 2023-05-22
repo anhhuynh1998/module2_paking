@@ -29,8 +29,7 @@ public class EditCar {
                 xeCanSua = car;
                 String newBienSo = AppUtils.nhapBienSo();
                 car.setBienSo(newBienSo);
-                System.out.println("Nhập lại tên: ");
-                String newName = scanner.nextLine();
+                String newName = PackingView.editName();
                 car.setName(newName);
                 break;
             }

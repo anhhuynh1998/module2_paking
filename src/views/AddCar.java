@@ -13,7 +13,7 @@ public class AddCar {
     static Scanner scanner = new Scanner(System.in);
     static ParkingService parkingService = new ParkingService();
     public static void addCars() {
-        String name = PackingView.inputName();
+        String name = PackingView.editName();
         String bienSo = AppUtils.nhapBienSo();
         Ticket newTicket = new Ticket()
                 .setId(System.currentTimeMillis())
