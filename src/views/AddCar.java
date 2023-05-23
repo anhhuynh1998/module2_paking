@@ -21,9 +21,23 @@ public class AddCar {
                 .setBienSo(bienSo)
                 .setGia()
                 .setNgayGui(PackingView.inputNgayGui());
-        parkingService.add(newTicket);
-        System.out.println("thêm vào bãi thành công");
-        PackingView.inVeXe(newTicket);
+
+        System.out.println("Chuẩn bị thêm vào bãi...");
+
+        if (confirmAddCar()) {
+            parkingService.add(newTicket);
+            System.out.println("Thêm vào bãi thành công");
+            PackingView.inVeXe(newTicket);
+        } else {
+            System.out.println("Không thêm vào bãi");
+        }
+
         Fragment.checkContinue();
     }
+    public static boolean confirmAddCar() {
+        System.out.println("Bạn có muốn thêm vào không? (y/n)");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
+    }
+
 }

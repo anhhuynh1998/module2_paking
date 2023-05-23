@@ -14,6 +14,7 @@ public class EditCar {
 
     static Scanner scanner = new Scanner(System.in);
     static ParkingService parkingService = new ParkingService();
+
     public static void suaThongTinXe() {
         List<Ticket> cars = parkingService.findAll();
         List<String> lines = new ArrayList<>();
@@ -31,21 +32,34 @@ public class EditCar {
                 car.setBienSo(newBienSo);
                 String newName = PackingView.editName();
                 car.setName(newName);
+
+                if (confirmEditCar()) {
+                    for (Ticket updatedCar : cars) {
+                        String line = updatedCar.getId() + "," + updatedCar.getName() + "," + updatedCar.getBienSo() + "," + updatedCar.getGia() + "," + updatedCar.getNgayGui();
+                        lines.add(line);
+                    }
+                    CSVUtils.write(path, lines);
+                    System.out.println("Sửa thông tin xe thành công!");
+                } else {
+                    System.out.println("Không sửa thông tin");
+                }
+
                 break;
             }
         }
+
         if (xeCanSua == null) {
             System.out.println("Không tìm thấy xe!");
+            suaThongTinXe();
             return;
         }
-        for (Ticket car : cars) {
-            String line = car.getId() + "," + car.getName() + "," + car.getBienSo() + "," + car.getGia() + "," + car.getNgayGui();
-            lines.add(line);
-        }
 
-        // Ghi lại thông tin xe vào file CSV
-        CSVUtils.write(path, lines);
-        System.out.println("Sửa thông tin xe thành công!");
         Fragment.checkContinue();
+    }
+
+    public static boolean confirmEditCar() {
+        System.out.println("Bạn có muốn sửa thông tin này không? (y/n)");
+        String choice = scanner.nextLine().trim().toLowerCase();
+        return choice.equals("y");
     }
 }
